@@ -13,21 +13,41 @@
         background-image: url("https://cdn.pixabay.com/photo/2016/09/14/16/06/wood-1669720_1280.jpg");
     } 
 </style>
+
 </head>
 <body>
-  <a href="anadir.html">CLICK ME</a>
-
-
-
+  <!--Titulo-->
+    <h1>My library</h1>
+      <a class="button_agregar" href="#popup1">Agregar libro</a>
+    </div>
+    
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h2>Agregar libro</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            <form action="/action_page.php">
+              Título: <input type="text" name="Titulo"><br>
+              Autor: <input type="text" name="Autor"><br>
+              Edición: <input type="text" name="Edicion"><br>
+              Editor: <input type="text" name="Editor"><br>
+              ISBN: <input type="text" name="ISBN"><br>
+              <input type="submit" value="Aceptar">
+          </form>
+        </div>
+      </div>
+    </div>
 
   <div class="busqueda">
       <form class="example" action="action_page.php">
-          <input type="text" placeholder="Search.." name="search">
+          <input type="text" placeholder="Buscar" name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
   </div>
-  <div id="agregar" class="container boton-agregar">
+
+
+  <!--<div id="agregar" class="container boton-agregar">
     <button type="button" class="btn btn-primary">Agregar libro</button>
-  </div>    
+  </div>-->
 </body>
 </html>

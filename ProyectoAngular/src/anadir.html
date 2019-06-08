@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ProyectoAngular</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html, body {
+        width: 50%;
+        height: 50%;
+        margin: 0;
+        padding: 0;
+        background-color: green;
+
+    }
+    #container {
+        width: inherit;
+        height: inherit;
+        margin: 0;
+        padding: 0;
+        background-color: pink;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+    } 
+</style>
+</head>
+<body>
+    <h1>Popup/Modal Windows without JavaScript</h1>
+    <div class="box">
+        <a class="button" href="#popup1">Let me Pop up</a>
+    </div>
+        
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Here i am</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Thank to pop me out of that button, but now i'm done so you can close this window.
+             </div>
+        </div>
+    </div>    
+    <form action="/action_page.php">
+        Título: <input type="text" name="Titulo"><br>
+        Autor: <input type="text" name="Autor"><br>
+        Edición: <input type="text" name="Edicion"><br>
+        Editor: <input type="text" name="Editor"><br>
+        ISBN: <input type="text" name="ISBN"><br>
+        <input type="submit" value="Aceptar">
+    </form>
+</body>
+</html>
