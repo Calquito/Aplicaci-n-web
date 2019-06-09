@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +17,41 @@
 
 </head>
 <body>
-  <!--Titulo-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        // Esta función se encargar de transformar el formulario a un archivo jsondd
+        function form2json(formID) {
+            // Obtenemos el objeto DOM del formulario
+            var form = document.getElementById(formID);
+    
+            // Obtenemos un objeto que contiene los campos del formulario, usando la función de Jquery "serializeArray" y luego los transformo en un objeto en el que los atributos "name" de cada campo del formulario pasan a ser las claves del objeto; y los "value" los valores.
+            var serializedForm = $(form).serializeArray().reduce(function(result, field){
+                if (result.hasOwnProperty(field.name)) {
+                    if (Array.isArray(result[field.name])) {
+                        result[field.name].push(field.value);
+                    } else {
+                        result[field.name] = [result[field.name], field.value];
+                    }
+                } else {
+                    result[field.name] = field.value;
+                }
+                return result;
+            }, {});
+    
+            // Transformo los campos a una cadena JSON
+            var jsonForm = JSON.stringify(serializedForm);
+    
+            // Agrego el tipo MIME del archivo y la codificación de caracteres
+            var jsonFileData = 'data:application/json;charset=UTF-8,';
+    
+            // Codifico la cadena JSON con la función "encodeURIComponent" para que pueda ser parte del atributo "href" y luego lo agrego.
+            jsonFileData += encodeURIComponent(jsonForm);
+    
+            // Devuelvo el resultado
+            return jsonFileData;
+        }
+    </script>
+    <!--Titulo-->
     <h1>My library</h1>
       <a class="button_agregar" href="#popup1">Agregar libro</a>
     </div>
@@ -26,13 +61,15 @@
         <h2>Agregar libro</h2>
         <a class="close" href="#">&times;</a>
         <div class="content">
-            <form action="/action_page.php">
-              Título: <input type="text" name="Titulo"><br>
-              Autor: <input type="text" name="Autor"><br>
-              Edición: <input type="text" name="Edicion"><br>
-              Editor: <input type="text" name="Editor"><br>
-              ISBN: <input type="text" name="ISBN"><br>
-              <input type="submit" value="Aceptar">
+            <form action="?" id=form_de_libros>
+              Título: <input type="text" autocomplete="off" name="Titulo" value=""><br>
+              Autor: <input type="text" autocomplete="off" name="Autor"><br>
+              Edición: <input type="text" autocomplete="off" name="Edicion"><br>
+              Editor: <input type="text" autocomplete="off" name="Editor"><br>
+              ISBN: <input type="text" autocomplete="off" name="ISBN"><br>
+              <button><a href="#" class="button" onclick="this.href=form2json('form_de_libros')" download="holamundo.json" >Agregar</a></button>
+             <!--<input type="submit"  href="#" onclick="this.href=form2json('form_de_libros')" download="holamundo.json" value="Aceptar">
+              <input type="submit" value="Aceptar">-->
           </form>
         </div>
       </div>
@@ -40,14 +77,10 @@
 
   <div class="busqueda">
       <form class="example" action="action_page.php">
-          <input type="text" placeholder="Buscar" name="search">
+          <input type="text" autocomplete="off" placeholder="Buscar" name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
   </div>
-
-
-  <!--<div id="agregar" class="container boton-agregar">
-    <button type="button" class="btn btn-primary">Agregar libro</button>
-  </div>-->
 </body>
 </html>
+
