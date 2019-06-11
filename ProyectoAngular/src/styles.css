@@ -81,6 +81,14 @@
     color: white;
     border: none;
   }
+
+  .boton_ag {
+    position:absolute;
+    right: 15%;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+  }
   
   .button:hover, button:hover {
     opacity: 0.8;
@@ -187,8 +195,10 @@
   form.example::after {
     content: "";
     clear: both;
-    /*display: table;*/
+    display: table;
   }
+
+  
  /*popup*/
 
 h1 {
